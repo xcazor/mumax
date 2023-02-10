@@ -8,7 +8,6 @@ alpha = 0.02
 m = uniform(1, .1, 0)
 relax()
 save(m)    // relaxed state
-
 autosave(m, 200e-12)
 tableautosave(10e-12)
 
