@@ -9,8 +9,8 @@ alpha= 0.2
 m=uniform(1, 1, 0)
 
 // Set external field parameters
-f := 1e9  # 1GHz
-A := 0.01 # 10mT
+f := 1e9  // 1GHz
+A := 0.01 // 10mT
 B_ext = vector(0.1, A*sin(2*pi*f*t), 0)
 
 // Run simulation
