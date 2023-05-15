@@ -1,0 +1,47 @@
+lx := 250e-9 
+ ly := 250e-9 
+ lz := 1e-9
+ dx := 1e-9
+ dy := 1e-9
+ dz := 1e-9
+ nx := floor(lx / dx)
+ ny := floor(ly / dy)
+ nz := floor(lz / dz)
+ SetGridSize(nx, ny, nz)
+ SetCellSize(dx, dy, dz) 
+ lamina := rect(nx,ny)
+ setgeom(lamina)
+ Msat = 0.658e6
+ Aex = 11.1e-12
+ GammaLL = 2*pi*175.87e9
+ Ku1 = 0.270e6 
+ anisU = vector(0,0,1)
+ Dbulk = 0.002500
+ 
+Bmax  := 2000.0e-3
+Bstep :=  5.0e-3
+MinimizerStop = 1e-6
+TableAdd(E_total)
+TableAdd(E_anis)
+TableAdd(E_demag)
+TableAdd(E_exch)
+TableAdd(E_Zeeman)
+TableAdd(B_anis)
+TableAdd(B_demag)
+TableAdd(B_exch)
+TableAdd(B_ext)
+
+m = uniform(0, 1, 0)
+B_ext = vector(0, Bmax, 0)
+relax()
+
+for B:=Bmax; B>=0; B-=Bstep{
+    B_ext = vector(0, B, 0)
+    minimize()
+	tablesave()
+	
+    if B <= 1 {
+		name := sprintf("m_%03.0f.ovf",B*1000)
+		saveas(m,name)
+    }
+}
