@@ -1,0 +1,17 @@
+// Set grid and cell sizes
+setgridsize(128, 32, 4)
+setcellsize(5e-9, 5e-9, 5e-9)
+
+// Set material parameters
+Msat = 860e3
+Aex  = 13e-12
+alpha= 0.2
+m=uniform(1, 1, 0)
+
+// Set external field parameters
+f := 1e9  // 1GHz
+A := 0.01 // 10mT
+B_ext = vector(0.1, A*sin(2*pi*f*t), 0)
+
+// Run simulation
+run(10e-9)
