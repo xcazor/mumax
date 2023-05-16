@@ -1,0 +1,45 @@
+// geometry
+sizeX := 80e-9
+sizeY := 80e-9
+sizeZ := 5e-9
+
+Nx := 32
+Ny := 32
+Nz := 1
+ 
+setgridsize(Nx, Ny, Nz)
+setcellsize(sizeX/Nx, sizeY/Ny, sizeZ/Nz)
+setGeom(ellipse(sizeX, sizeY))
+
+// set up free layer
+alpha = 0.01
+Msat = 0.658e6
+Aex = 11.1e-12
+GammaLL = 2*pi*175.87e9
+Ku1 = -0.2
+anisU = vector(0,0,1)
+Dbulk = 0.002500
+
+
+
+// set up spacer layer parameters
+lambda       = 1
+Pol          = 0.5669
+epsilonprime = 0
+
+// set up fixed layer polarization
+m = vortex(-1,0)                // Set m to the desired fixed layer polarization
+mcopy := m.buffer().hostcopy() // Make a copy of the magnetization
+fixedlayer.add( mcopy, 1 )     // Use this copy to set the fixed layer polarization
+
+m  = vortex(1, 0)
+// send current
+Jtot := -0.008            // total current in A
+area := sizeX*sizeY*pi/4
+jc   := Jtot / area       // current density in A/m2
+J = vector(0, 0, jc)
+
+// schedule output & run
+autosave(m, 100e-12)
+tableautosave(10e-12)
+run(1e-9)
