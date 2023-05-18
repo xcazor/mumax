@@ -14,7 +14,7 @@ setGeom(ellipse(sizeX, sizeY))
 // set up free layer
 alpha = 0.01
 Msat = 0.658e6
-Aex = 11
+Aex = 0.1
 GammaLL = 2*pi*175.87e9
 Ku1 = 0.270e6 
 anisU = vector(0,0,1)
