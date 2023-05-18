@@ -16,6 +16,15 @@ alpha = 0.01
 Msat = 0.658e6
 Aex = 11
 
+TableAdd(E_total)
+TableAdd(E_anis)
+TableAdd(E_demag)
+TableAdd(E_exch)
+TableAdd(E_Zeeman)
+TableAdd(B_anis)
+TableAdd(B_demag)
+TableAdd(B_exch)
+
 
 
 // set up spacer layer parameters
