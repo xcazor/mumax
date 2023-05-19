@@ -35,7 +35,6 @@ epsilonprime = 0
 m = vortex(-1,0)                // Set m to the desired fixed layer polarization
 mcopy := m.buffer().hostcopy() // Make a copy of the magnetization
 fixedlayer.add( mcopy, 1 )     // Use this copy to set the fixed layer polarization
-save(mcopy)
 
 m  = vortex(1, 0)
 // send current
