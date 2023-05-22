@@ -20,8 +20,8 @@ In this folder you will find:
 -STT dmi code: 
 -Variations for the A exchange energy (high, low, zero, negative)
 -Variations for the Js current (high, low, zero, negative)
--Variations for the Dbulk (high, low, zero, negative)
--Variations for the anisU (high, low, zero, negative) 
+-Variations for the Dbulk (high, low -- positive, negative)
+-Variations for the anisU (high, low -- positive, negative) 
 
 --drill:
 test codes, when we are using new propeties, or blending codes, unformaliced but working codes. 
