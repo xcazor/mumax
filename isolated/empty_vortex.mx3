@@ -1,20 +1,30 @@
-setgridsize(128, 128, 3)
+setgridsize(128, 128, 4)
 setcellsize(5e-9, 5e-9, 5e-9)
 
 d      := 200e-9
 sq     := ellipse(d, d)                // square with side d
 
 r     := 200e-9
-h     := 5e-9
+h     := 10e-9
 hole  := cylinder(r, h)              // circle with diameter h
-hole1 := hole.transl(0, 0, 5e-9)   // translated circle #1
+hole1 := hole.transl(0, 0, 0)   // translated circle #1
 cheese:= sq.sub(hole1)// subtract the circles from the square (makes holes).
 setgeom(cheese)
 
 Msat = 0.658e6
 aex = 11.1e-12
 alpha = 0.01
+
+TableAdd(E_total)
+TableAdd(E_demag)
+TableAdd(E_exch)
+TableAdd(E_Zeeman)
+TableAdd(B_demag)
+TableAdd(B_exch)
+
+
 m = vortex(-1, 0)
 relax()
+tableautosave(10e-12)
 autosave(m, 100e-12)
 run(1e-9)
