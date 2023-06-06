@@ -1,0 +1,30 @@
+dx := 1e-9
+dy := 1e-9
+dz := 1e-9
+Nx := 22 
+Ny := 22
+Nz := 22
+setgridsize(Nx, Ny, Nz)
+setcellsize(dx, dy, dz)
+
+//Magnetic parameters
+Msat  = 800e3 
+Aex   = 13e-12 
+alpha = 0.5
+
+//Geometry
+diam := 100e-9
+hh := 5e-9
+disk1 := cylinder(diam,hh).transl(0,0,10e-9)
+disk2 := cylinder(diam,hh).transl(0,0,-10e-9)
+disks := disk1.add(disk2)
+setgeom(disks)
+saveas(geom,"2_discos")
+defregion(1, zrange(0,inf))
+defregion(2, zrange(-inf,0))
+
+//Magnetic configurations
+m.setRegion(1, uniform(1, 0, 0))
+m.setRegion(2, uniform(1, 0, 0))
+
+saveas(m,"initial_state")
