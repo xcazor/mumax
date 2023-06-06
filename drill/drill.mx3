@@ -1,0 +1,17 @@
+setgridsize(32, 32, 8)
+setcellsize(5e-9, 5e-9, 5e-9)
+Msat = 0.658e6
+aex = 11.1e-12
+alpha = 0.01
+
+
+r := 200e-9
+h := 5e-9
+
+disk1 := cylinder(r, h)
+disk2 := cylinder(r, h).transl(0,0,2)
+
+disks := disk1.add(disk2)
+
+setgeom(disks)
+saveas(geom, "disksgeom")
