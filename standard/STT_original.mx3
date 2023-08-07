@@ -46,5 +46,4 @@ J = vector(0, 0, jc)
 // schedule output & run
 autosave(m, 100e-12)
 tableautosave(10e-12)
-run(1e-9
 run(1e-9)
